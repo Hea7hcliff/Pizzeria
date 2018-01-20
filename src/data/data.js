@@ -2,38 +2,38 @@ export const data = {
     data: [
         {
             id: '1',
-            name: 'Valkoinen pizza',
-            filling: ['Salami', 'Pepperoni', 'Juusto'],
+            name: 'Sinivalkoinen Suomi-Pizza',
+            filling: ['Kinkku', 'Katkarapu', 'Pepperoni'],
             type: 'pizza',
             price: 6.95,
         },
         {
             id: '2',
-            name: 'Musta pizza',
-            filling: ['Kana', 'Pepperoni', 'Juusto'],
+            name: 'Torinon tulinen',
+            filling: ['Salami', 'Jalopeno', 'Jauheliha', 'Oliivi'],
             type: 'pizza',
-            price: 7.95,
+            price: 8.00,
         },
         {
             id: '3',
-            name: 'Pinkki pizza',
-            filling: ['Ananas', 'Persikka', 'Rukola'],
+            name: 'Talon perinteinen',
+            filling: ['Ananas', 'Kinkku'],
             type: 'pizza',
-            price: 7.75,
+            price: 5.50,
         },
         {
             id: '4',
-            name: 'Homo pizza',
-            filling: ['Omena', 'Banaani', 'Ananas'],
+            name: 'Opera',
+            filling: ['Kinkku', 'Pepperoni'],
             type: 'pizza',
-            price: 7.95,
+            price: 5.50,
         },
         {
             id: '5',
-            name: 'Tosi hetero pizza',
-            filling: ['Kebab', 'Jauheliha', 'Pepperoni'],
+            name: 'Frutti di mare',
+            filling: ['Katkarapu', 'Tonnikala', 'Oliivi'],
             type: 'pizza',
-            price: 7.95,
+            price: 7.00,
         }
     ]
 };
