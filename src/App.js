@@ -4,11 +4,13 @@ import './App.css';
 import ProductList from './components/product-list';
 import { data } from './data/data';
 import ShoppingCart from './components/shopping-cart';
+import SearchBar from './components/search-bar';
 
 class App extends Component {
     state = {
         data: null,
-        shoppingcart: []
+        shoppingcart: [],
+        searchterm: ''
     };
 
     componentDidMount() {
@@ -23,8 +25,13 @@ class App extends Component {
         })
     }
 
+    searchHandler = (event) => {
+        this.setState({searchterm: event.target.value})
+    }
+
     render() {
-        console.log(this.state.shoppingcart);
+       // console.log(this.state.searchterm);
+
         return (
             <div className="App">
                 <header className="App-header">
@@ -34,6 +41,7 @@ class App extends Component {
                 <div className="container">
                     <ProductList data={this.state.data} addPizza={this.addPizza} />
                     <ShoppingCart data={this.state.shoppingcart} />
+                    <SearchBar data={this.state.data} searchterm = {this.state.searchterm} searchHandler={this.searchHandler} />
                 </div>
             </div>
         );
