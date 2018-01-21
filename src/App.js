@@ -21,16 +21,22 @@ class App extends Component {
         // const list = [];
         // list.push(pizza);
         this.setState({
-            shoppingcart: [ ...this.state.shoppingcart, pizza ]
+            shoppingcart: [...this.state.shoppingcart, pizza]
         })
     }
 
+    removePizza = (pizza) => {
+       this.setState({
+           shoppingcart: [...this.state.shoppingcart.slice(0, pizza), ...this.state.shoppingcart.slice(pizza + 1)]
+       })
+    }
+
     searchHandler = (event) => {
-        this.setState({searchterm: event.target.value})
+        this.setState({ searchterm: event.target.value })
     }
 
     render() {
-       // console.log(this.state.searchterm);
+        // console.log(this.state.searchterm);
 
         return (
             <div className="App">
@@ -40,8 +46,8 @@ class App extends Component {
                 </header>
                 <div className="container">
                     <ProductList data={this.state.data} addPizza={this.addPizza} />
-                    <ShoppingCart data={this.state.shoppingcart} />
-                    <SearchBar data={this.state.data} searchterm = {this.state.searchterm} searchHandler={this.searchHandler} />
+                    <ShoppingCart data={this.state.shoppingcart} removePizza={this.removePizza} />
+                    <SearchBar data={this.state.data} searchterm={this.state.searchterm} searchHandler={this.searchHandler} />
                 </div>
             </div>
         );

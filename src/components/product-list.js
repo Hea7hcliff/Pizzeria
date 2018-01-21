@@ -3,7 +3,7 @@ import ProductItem from './product-item';
 
 class ProductList extends Component {
     handleAddPizza = (pizza) => {
-        console.log('Great success', pizza);
+        console.log('Great success adding', pizza);
         this.props.addPizza(pizza);
     }
 
