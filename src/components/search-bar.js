@@ -15,7 +15,7 @@ class SearchBar extends Component {
         this.props.addFood(food);
     }
 
-    submit = function(e){
+    submit = function (e) {
         e.preventDefault();
     }
 
