@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import ProductItem from './product-item';
 
 class ProductList extends Component {
-    handleAddPizza = (pizza) => {
-        console.log('Great success adding', pizza);
-        this.props.addPizza(pizza);
+    handleAddFood = (food) => {
+        console.log('Great success adding', food);
+        this.props.addFood(food);
     }
 
     render() {
@@ -12,11 +12,10 @@ class ProductList extends Component {
 
         return (
             <div className="product-list">
-                <h3>Pizzat</h3>
+                <h3>Foods</h3>
                 <ul>
                     {
-                        data !== null && data.map(
-                            pizza => <ProductItem key={pizza.id} pizza={pizza} handleAddPizza={this.handleAddPizza} />
+                        data !== null && data.map((food, i) => <ProductItem key={i} food={food} handleAddFood={this.handleAddFood} />
                         )
                     }
                 </ul>

@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ProductItem = ({ pizza, handleAddPizza }) => {
+const ProductItem = ({ food, handleAddFood }) => {
     return(
         <li>
-            <p>{pizza.name}</p>
-            <div>{pizza.filling.map(filling => <p key={filling}>{filling}</p>) }</div>
-            <p>{pizza.price}</p>
-            <button onClick={() => handleAddPizza(pizza)}>Lisää</button>
+            <p>{food.name}</p>
+            <div>{food.filling.map(filling => <p key={filling}>{filling}</p>) }</div>
+            <p>{food.price} €</p>
+            <button onClick={() => handleAddFood(food)}>Lisää</button>
         </li>
     )
 }

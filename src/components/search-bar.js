@@ -1,34 +1,43 @@
 import React, { Component } from 'react';
+import SearchItem from './search-item';
 
 function searchingFor(searchterm) {
-    return function (x) {
+    return function (food) {
         if (searchterm !== '') {
-            return x.name.toLowerCase().includes(searchterm.toLowerCase()) || !searchterm
+            return food.name.toLowerCase().includes(searchterm.toLowerCase()) || !searchterm
         }
     }
 }
 
 class SearchBar extends Component {
+    handleAddFood = (food) => {
+        console.log('Great success adding', food);
+        this.props.addFood(food);
+    }
+
+    submit = function(e){
+        e.preventDefault();
+    }
 
     render() {
         const { data } = this.props;
         const searchterm = this.props.searchterm;
 
-        const searchresult = data !== null && data.filter(searchingFor(searchterm)).map((data, i) =>
-            <div key={i}>
-                <span>{data.name}</span>
-            </div>)
-
         return (
-            <div className="container">
-                <form>
+            <div className="searchbar">
+                <form onSubmit={this.submit}>
                     <h3>Searchbar</h3>
                     <input type="text"
                         placeholder="Search..."
                         onChange={this.props.searchHandler}
                         value={searchterm}
                     />
-                    {searchresult}
+                    <ul>
+                        {
+                            data !== null && data.filter(searchingFor(searchterm)).map((food, i) =>
+                                <SearchItem key={i} food={food} handleAddFood={this.handleAddFood} />)
+                        }
+                    </ul>
                 </form>
             </div>
         )

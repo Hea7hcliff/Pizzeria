@@ -17,17 +17,15 @@ class App extends Component {
         this.setState({ data: data.data });
     }
 
-    addPizza = (pizza) => {
-        // const list = [];
-        // list.push(pizza);
+    addFood = (food) => {
         this.setState({
-            shoppingcart: [...this.state.shoppingcart, pizza]
+            shoppingcart: [...this.state.shoppingcart, food]
         })
     }
 
-    removePizza = (pizza) => {
+    removeFood = (food) => {
        this.setState({
-           shoppingcart: [...this.state.shoppingcart.slice(0, pizza), ...this.state.shoppingcart.slice(pizza + 1)]
+           shoppingcart: [...this.state.shoppingcart.slice(0, food), ...this.state.shoppingcart.slice(food + 1)]
        })
     }
 
@@ -45,9 +43,9 @@ class App extends Component {
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
                 <div className="container">
-                    <ProductList data={this.state.data} addPizza={this.addPizza} />
-                    <ShoppingCart data={this.state.shoppingcart} removePizza={this.removePizza} />
-                    <SearchBar data={this.state.data} searchterm={this.state.searchterm} searchHandler={this.searchHandler} />
+                    <ProductList data={this.state.data} addFood={this.addFood} />
+                    <ShoppingCart data={this.state.shoppingcart} removeFood={this.removeFood} />
+                    <SearchBar data={this.state.data} searchterm={this.state.searchterm} searchHandler={this.searchHandler} addFood={this.addFood} />
                 </div>
             </div>
         );
