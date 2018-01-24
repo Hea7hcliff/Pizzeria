@@ -6,29 +6,30 @@ class ShoppingCart extends Component {
         console.log('Great success deleting', food);
         this.props.removeFood(index);
     }
- 
-    
-    /*calcSum = (prices, price) => {
-        prices.push(price);
-        const total = prices.reduce((prices, price) => prices + price);
-        return total;
-    }*/
-
 
     render() {
         const { data } = this.props;
-        // const prices = [];
+        const prices = data.map(food => food.price);
+        const reducer = (total, price) => total + price;
+        var msg = '';
+
+        if (data.length > 0) {
+            const total = prices.reduce(reducer);
+            msg = "Kokonaishinta:  "  + total + " €";
+        } else {
+            msg = "Ostoskori on tyhjä";
+        }
+
 
         return (
             <div className="shopping-cart">
-                <h3>Shopping Cart</h3>
-
+                <h3>Ostoskori</h3>
                 <ul>
                     {data.map((food, i) =>
                         <ShoppingItem i={i} key={i} food={food} handleRemoveFood={this.handleRemoveFood} />
                     )}
                 </ul>
-                    <p>Total price: {/*this.calcSum(prices, ?data.price?)*/} €</p>
+                <p>{msg}</p>
             </div>
         )
     }

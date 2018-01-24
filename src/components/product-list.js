@@ -12,10 +12,11 @@ class ProductList extends Component {
 
         return (
             <div className="product-list">
-                <h3>Foods</h3>
+                <h3>Ruuat</h3>
                 <ul>
                     {
-                        data !== null && data.map((food, i) => <ProductItem key={i} food={food} handleAddFood={this.handleAddFood} />
+                        data !== null && data.map((food, i) =>
+                            <ProductItem  key={i} food={food} handleAddFood={this.handleAddFood} />
                         )
                     }
                 </ul>

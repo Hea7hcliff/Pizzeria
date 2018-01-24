@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/header';
 import ProductList from './components/product-list';
-import { data } from './data/data';
 import ShoppingCart from './components/shopping-cart';
 import SearchBar from './components/search-bar';
+
+import { data } from './data/data';
 
 class App extends Component {
     state = {
@@ -38,10 +39,9 @@ class App extends Component {
 
         return (
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
+                <div>
+                    <Header />
+                </div>
                 <div className="container">
                     <ProductList data={this.state.data} addFood={this.addFood} />
                     <ShoppingCart data={this.state.shoppingcart} removeFood={this.removeFood} />

@@ -26,7 +26,7 @@ class SearchBar extends Component {
         return (
             <div className="searchbar">
                 <form onSubmit={this.submit}>
-                    <h3>Searchbar</h3>
+                    <h3>Hakupalkki</h3>
                     <input type="text"
                         placeholder="Search..."
                         onChange={this.props.searchHandler}
