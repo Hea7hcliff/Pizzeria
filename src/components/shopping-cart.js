@@ -15,11 +15,10 @@ class ShoppingCart extends Component {
 
         if (data.length > 0) {
             const total = prices.reduce(reducer);
-            msg = "Kokonaishinta:  "  + total + " €";
+            msg = "Kokonaishinta:  " + total + " €";
         } else {
             msg = "Ostoskori on tyhjä";
         }
-
 
         return (
             <div className="shopping-cart">
