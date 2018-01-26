@@ -19,9 +19,8 @@ class App extends Component {
     getFood() {
         axios.get('http://localhost:3000/api/Food')
             .then(response => {
-                this.setState({ data: response.data }, () =>
-                {
-                    console.log(this.state);
+                this.setState({ data: response.data }, () => {
+                    // console.log(this.state);
                 })
             })
     }
