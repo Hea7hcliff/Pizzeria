@@ -4,8 +4,10 @@ import Header from './components/header';
 import ProductList from './components/product-list';
 import ShoppingCart from './components/shopping-cart';
 import SearchBar from './components/search-bar';
+import axios from 'axios';
 
-import { data } from './data/data';
+// mock data
+// import { data } from './data/data';
 
 class App extends Component {
     state = {
@@ -14,8 +16,18 @@ class App extends Component {
         searchterm: ''
     };
 
-    componentDidMount() {
-        this.setState({ data: data.data });
+    getFood() {
+        axios.get('http://localhost:3000/api/Food')
+            .then(response => {
+                this.setState({ data: response.data }, () =>
+                {
+                    console.log(this.state);
+                })
+            })
+    }
+
+    componentWillMount() {
+        this.getFood();
     }
 
     addFood = (food) => {
@@ -25,9 +37,9 @@ class App extends Component {
     }
 
     removeFood = (food) => {
-       this.setState({
-           shoppingcart: [...this.state.shoppingcart.slice(0, food), ...this.state.shoppingcart.slice(food + 1)]
-       })
+        this.setState({
+            shoppingcart: [...this.state.shoppingcart.slice(0, food), ...this.state.shoppingcart.slice(food + 1)]
+        })
     }
 
     searchHandler = (event) => {
