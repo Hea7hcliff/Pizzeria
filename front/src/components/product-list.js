@@ -7,16 +7,19 @@ class ProductList extends Component {
         this.props.addFood(food);
     }
 
-    render() {
-        const { data } = this.props;
+    getFillingName = (filling, id) => {
+        return filling.filter(f => f.id === id).map(f => f.name);
+    }
 
+    render() {
+        const { food, filling } = this.props;
         return (
             <div className="product-list">
                 <h3>Ruuat</h3>
                 <ul>
                     {
-                        data !== null && data.map((food, i) =>
-                            <ProductItem  key={i} food={food} handleAddFood={this.handleAddFood} />
+                        filling !== null && food !== null && food.map((food, i) =>
+                            <ProductItem key={i} food={food} getFillingName={this.getFillingName} handleAddFood={this.handleAddFood} filling={filling} />
                         )
                     }
                 </ul>

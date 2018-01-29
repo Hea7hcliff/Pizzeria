@@ -7,7 +7,6 @@ const SearchItem = ({ food, handleAddFood }) => {
             <button onClick={() => handleAddFood(food)}>Lisää</button>
         </li>
     )
-
 }
 
 export default SearchItem;

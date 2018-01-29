@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ShoppingItem from './shopping-item';
+import axios from 'axios';
 
 class ShoppingCart extends Component {
     handleRemoveFood = (index, food) => {
@@ -7,28 +8,47 @@ class ShoppingCart extends Component {
         this.props.removeFood(index);
     }
 
-    render() {
-        const { data } = this.props;
-        const prices = data.map(food => food.price);
-        const reducer = (total, price) => total + price;
-        var msg = '';
+    addOrder = (food) => {
+        const order = {
+            content: [food.map(food => food.id)],
+            user: "Test"
+        }
 
-        if (data.length > 0) {
+        axios.request({
+            method: 'post',
+            url: 'http://localhost:3000/api/Orders',
+            data: order
+        }).then(response => {
+            console.log(response.data);
+        }).catch(err => console.log(err));
+    }
+
+    render() {
+        const { food } = this.props;
+        const prices = food.map(food => food.price);
+        const reducer = (total, price) => total + price;
+
+        var info = '';
+        var order_b;
+        if (food.length > 0) {
             const total = prices.reduce(reducer);
-            msg = "Kokonaishinta:  " + total + " €";
+            order_b = <button onClick={() => this.addOrder(food)}>Tilaa</button>
+            info = "Kokonaishinta:  " + total + " €";
+
         } else {
-            msg = "Ostoskori on tyhjä";
+            info = "Ostoskori on tyhjä";
         }
 
         return (
             <div className="shopping-cart">
                 <h3>Ostoskori</h3>
                 <ul>
-                    {data.map((food, i) =>
+                    {food.map((food, i) =>
                         <ShoppingItem i={i} key={i} food={food} handleRemoveFood={this.handleRemoveFood} />
                     )}
                 </ul>
-                <p>{msg}</p>
+                <p>{info}</p>
+                {order_b}
             </div>
         )
     }

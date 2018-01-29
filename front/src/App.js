@@ -6,12 +6,10 @@ import ShoppingCart from './components/shopping-cart';
 import SearchBar from './components/search-bar';
 import axios from 'axios';
 
-// mock data
-// import { data } from './data/data';
-
 class App extends Component {
     state = {
-        data: null,
+        food: null,
+        filling: null,
         shoppingcart: [],
         searchterm: ''
     };
@@ -19,7 +17,16 @@ class App extends Component {
     getFood() {
         axios.get('http://localhost:3000/api/Food')
             .then(response => {
-                this.setState({ data: response.data }, () => {
+                this.setState({ food: response.data }, () => {
+                    // console.log(this.state);
+                })
+            })
+    }
+
+    getFilling() {
+        axios.get('http://localhost:3000/api/Fillings/')
+            .then(response => {
+                this.setState({ filling: response.data }, () => {
                     // console.log(this.state);
                 })
             })
@@ -27,6 +34,7 @@ class App extends Component {
 
     componentWillMount() {
         this.getFood();
+        this.getFilling();
     }
 
     addFood = (food) => {
@@ -54,9 +62,9 @@ class App extends Component {
                     <Header />
                 </div>
                 <div className="container">
-                    <ProductList data={this.state.data} addFood={this.addFood} />
-                    <ShoppingCart data={this.state.shoppingcart} removeFood={this.removeFood} />
-                    <SearchBar data={this.state.data} searchterm={this.state.searchterm} searchHandler={this.searchHandler} addFood={this.addFood} />
+                    <ProductList food={this.state.food} filling={this.state.filling} addFood={this.addFood} findFilling={this.findFilling} />
+                    <ShoppingCart food={this.state.shoppingcart} removeFood={this.removeFood} />
+                    <SearchBar food={this.state.food} searchterm={this.state.searchterm} searchHandler={this.searchHandler} addFood={this.addFood} />
                 </div>
             </div>
         );
