@@ -29,6 +29,7 @@ class ProductList extends Component {
         this.props.addFood(food);
     }
 
+    // Tulostus täytteille
     generateFillings = (food, filling) => {
         if (food.id !== "6") {
             return food.filling.map((id, i) => <p key={i}>- {this.getFillingName(filling, id)}</p>)
@@ -36,7 +37,8 @@ class ProductList extends Component {
             return <p>-Voit saada mitä vain</p>;
         }
     }
-
+   
+    // Hakee lisukkeen nimen
     getFillingName = (filling, id) => {
         var f = filling.filter(f => f.id === id).map(f => f.name);
         return f;
