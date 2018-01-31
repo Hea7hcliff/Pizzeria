@@ -6,21 +6,26 @@ class ProductList extends Component {
 
         // ISSUE 
         // Pomon surprise! eli random täytteitä
-        
+
         // Mitä pitää ratkaista? :
+        // - Kuinka määrittää sama pizza uusilla täytteillä
         // - Kuinka saa pomon pizzan uniikkina ostoskoriin random täytteillä
         // - Pomon pizza id backendissä = 5a6efadef0371f11d8e87389, mockdatassa = 6
-        
+
         if (food.id === "6") {
             // alustaa listan
             if (food.filling[0] === "") {
                 food.filling = [];
             }
 
-            var array = filling.map(f => f.id);
-            // lisää 4 random täytettä
-            for (var i = 0; i < 4; i++) { food.filling.push(array[Math.floor(Math.random() * array.length)]); }
-            
+            // Temp fix
+            if (food.filling.length !== 4) {
+                var array = filling.map(f => f.id);
+                // lisää 4 random täytettä
+                for (var i = 0; i < 4; i++) { food.filling.push(array[Math.floor(Math.random() * array.length)]); }
+            }
+
+
             // lisää ruuan
             this.props.addFood(food);
             console.log(food.filling);
@@ -37,7 +42,7 @@ class ProductList extends Component {
             return <p>-Voit saada mitä vain</p>;
         }
     }
-   
+
     // Hakee lisukkeen nimen
     getFillingName = (filling, id) => {
         var f = filling.filter(f => f.id === id).map(f => f.name);
