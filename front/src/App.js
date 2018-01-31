@@ -5,6 +5,7 @@ import ProductList from './components/product-list';
 import ShoppingCart from './components/shopping-cart';
 import SearchBar from './components/search-bar';
 import axios from 'axios';
+import { data } from './data/data';
 
 class App extends Component {
     state = {
@@ -14,6 +15,7 @@ class App extends Component {
         searchterm: ''
     };
 
+    /*
     getFood() {
         axios.get('http://localhost:3000/api/Food')
             .then(response => {
@@ -31,16 +33,23 @@ class App extends Component {
                 })
             })
     }
-
+    
     componentWillMount() {
         this.getFood();
         this.getFilling();
     }
+    */
+
+    componentDidMount() {
+        this.setState({ food: data.food })
+        this.setState({ filling: data.filling })
+    }
 
     addFood = (food) => {
         this.setState({
-            shoppingcart: [...this.state.shoppingcart, food]
+            shoppingcart: [...this.state.shoppingcart, food]     
         })
+        console.log(food);  
     }
 
     removeFood = (food) => {
@@ -54,8 +63,6 @@ class App extends Component {
     }
 
     render() {
-        // console.log(this.state.searchterm);
-
         return (
             <div className="App">
                 <div>
@@ -63,7 +70,7 @@ class App extends Component {
                 </div>
                 <div className="container">
                     <ProductList food={this.state.food} filling={this.state.filling} addFood={this.addFood} findFilling={this.findFilling} />
-                    <ShoppingCart food={this.state.shoppingcart} removeFood={this.removeFood} />
+                    <ShoppingCart food={this.state.shoppingcart} removeFood={this.removeFood} filling={ this.state.filling }/>
                     <SearchBar food={this.state.food} searchterm={this.state.searchterm} searchHandler={this.searchHandler} addFood={this.addFood} />
                 </div>
             </div>
