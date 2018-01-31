@@ -27,9 +27,9 @@ class ProductList extends Component {
 
     generateFillings = (food, filling) => {
         if (food.id !== "6") {
-            return <div>Täytteet: {food.filling.map((id, i) => <p key={i}>- {this.getFillingName(filling, id)}</p>)}</div>
+            return food.filling.map((id, i) => <p key={i}>- {this.getFillingName(filling, id)}</p>)
         } else {
-            return "-Voit saada mitä vain";
+            return <p>-Voit saada mitä vain</p>;
         }
     }
 
