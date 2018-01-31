@@ -15,6 +15,7 @@ class App extends Component {
         searchterm: ''
     };
 
+    // BACKEND  
     /*
     getFood() {
         axios.get('http://localhost:3000/api/Food')
@@ -38,8 +39,8 @@ class App extends Component {
         this.getFood();
         this.getFilling();
     }
-    */
-
+    */ 
+    
     componentDidMount() {
         this.setState({ food: data.food })
         this.setState({ filling: data.filling })

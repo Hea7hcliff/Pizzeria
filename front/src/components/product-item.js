@@ -1,5 +1,4 @@
 import React from 'react';
-// <div>Täytteet: {food.filling.map((id, i) => <p key={i}>- {getFillingName(filling, id)}</p>)}</div>
 
 const ProductItem = ({ food, handleAddFood, filling, generateFillings }) => {
     return (

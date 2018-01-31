@@ -6,7 +6,7 @@ class ProductList extends Component {
 
         // ISSUE 
         // Pomon surprise! eli random täytteitä
-
+        
         // Mitä pitää ratkaista? :
         // - Kuinka saa pomon pizzan uniikkina ostoskoriin random täytteillä
         // - Pomon pizza id backendissä = 5a6efadef0371f11d8e87389, mockdatassa = 6
