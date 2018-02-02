@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "start": "node .",
     "posttest": "npm run lint && nsp check",
-    "git": "git add . && git commit -m 'fixes' && git push && git status"
+    "gitq": "git add . && git commit -m 'fixes' && git push && git status"
   },
   "dependencies": {
     "compression": "^1.0.3",
