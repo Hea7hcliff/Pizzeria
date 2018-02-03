@@ -8,11 +8,13 @@ class ShoppingCart extends Component {
         this.props.removeFood(index);
     }
 
+    // Hakee täytteen nimen
     getFillingName = (filling, id) => {
         var f = filling.filter(f => f.id === id).map(f => f.name);
         return f;
     }
 
+    // Tilauksen hoitaminen
     addOrder = (food) => {
         const order = {
             content: [food.map(food => food.id)],

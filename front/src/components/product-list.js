@@ -3,38 +3,36 @@ import ProductItem from './product-item';
 
 class ProductList extends Component {
     handleAddFood = (food, filling) => {
-
-        // ISSUE 
-        // Pomon surprise! eli random täytteitä
-
-        // Mitä pitää ratkaista? :
-        // - Kuinka määrittää sama pizza uusilla täytteillä
-        // - Kuinka saa pomon pizzan uniikkina ostoskoriin random täytteillä
-        // - Pomon pizza id backendissä = 5a6efadef0371f11d8e87389, mockdatassa = 6
-
         if (food.id === "6") {
-            // alustaa listan
-            if (food.filling[0] === "") {
-                food.filling = [];
+            // *Luo unique ID
+            // Uuden objektin alustaminen
+            let randomFood = {
+                filling: [],
+                name: food.name,
+                price: food.price,
+                type: food.type,
+                id: 'x'
+            };
+
+            var fillingsArray = filling.map(f => f.id);
+
+            // *Muokkaa että 4 uniikkia täytettä
+            // Lisää 4 random täytettä
+            for (var i = 0; i < 4; i++) {
+                const newFilling = fillingsArray[Math.floor(Math.random() * fillingsArray.length)];
+                randomFood.filling.push(newFilling);
             }
 
-            // Temp fix
-            if (food.filling.length !== 4) {
-                var array = filling.map(f => f.id);
-                // lisää 4 random täytettä
-                for (var i = 0; i < 4; i++) { food.filling.push(array[Math.floor(Math.random() * array.length)]); }
-            }
-
-
-            // lisää ruuan
+            // Lisää generoidun ruuan
+            this.props.addFood(randomFood);
+            console.log('Great success adding', randomFood);
+        } else {
+            console.log('Great success adding', food);
             this.props.addFood(food);
-            console.log(food.filling);
         }
-        console.log('Great success adding', food);
-        this.props.addFood(food);
     }
 
-    // Tulostus täytteille
+    // Tulostaa täytteet
     generateFillings = (food, filling) => {
         if (food.id !== "6") {
             return food.filling.map((id, i) => <p key={i}>- {this.getFillingName(filling, id)}</p>)

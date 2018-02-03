@@ -17,6 +17,7 @@ class App extends Component {
 
     // BACKEND  
     /*
+    // DB haku
     getFood() {
         axios.get('http://localhost:3000/api/Food')
             .then(response => {
@@ -41,11 +42,13 @@ class App extends Component {
     }
     */ 
     
+    // Mock-data
     componentDidMount() {
         this.setState({ food: data.food })
         this.setState({ filling: data.filling })
     }
 
+    // Ruuan lisääminen ostoskoriin
     addFood = (food) => {
         this.setState({
             shoppingcart: [...this.state.shoppingcart, food]     
@@ -53,12 +56,14 @@ class App extends Component {
         console.log(food);  
     }
 
+    // Ruuan poistaminen ostoskoriin
     removeFood = (food) => {
         this.setState({
             shoppingcart: [...this.state.shoppingcart.slice(0, food), ...this.state.shoppingcart.slice(food + 1)]
         })
     }
 
+    // Haun hallinta
     searchHandler = (event) => {
         this.setState({ searchterm: event.target.value })
     }
@@ -66,7 +71,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div>
+                <div className="header">
                     <Header />
                 </div>
                 <div className="container">

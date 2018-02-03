@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchItem from './search-item';
 
+// Haku vertailu
 function searchingFor(searchterm) {
     return function (food) {
         if (searchterm !== '') {
@@ -10,11 +11,14 @@ function searchingFor(searchterm) {
 }
 
 class SearchBar extends Component {
+
+    // *Korjaa ja yhdistä
     handleAddFood = (food) => {
         console.log('Great success adding', food);
         this.props.addFood(food);
     }
 
+    // Estää formin default action
     submit = function (e) {
         e.preventDefault();
     }
