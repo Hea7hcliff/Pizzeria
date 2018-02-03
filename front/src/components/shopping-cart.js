@@ -9,8 +9,8 @@ class ShoppingCart extends Component {
     }
 
     // Hakee täytteen nimen
-    getFillingName = (filling, id) => {
-        var f = filling.filter(f => f.id === id).map(f => f.name);
+    getFillingName = (fillings, id) => {
+        var f = fillings.filter(f => f.id === id).map(f => f.name);
         return f;
     }
 
@@ -31,15 +31,15 @@ class ShoppingCart extends Component {
     }
 
     render() {
-        const { food, filling } = this.props;
-        const prices = food.map(food => food.price);
+        const { cartFoods, fillings } = this.props;
+        const prices = cartFoods.map(food => food.price);
         const reducer = (total, price) => total + price;
 
         var info = '';
         var order_b;
-        if (food.length > 0) {
+        if (cartFoods.length > 0) {
             const total = prices.reduce(reducer);
-            order_b = <button onClick={() => this.addOrder(food)}>Tilaa</button>
+            order_b = <button onClick={() => this.addOrder(cartFoods)}>Tilaa</button>
             info = "Kokonaishinta:  " + total + " €";
 
         } else {
@@ -50,8 +50,8 @@ class ShoppingCart extends Component {
             <div className="shopping-cart">
                 <h3>Ostoskori</h3>
                 <ul>
-                    {food.map((food, i) =>
-                        <ShoppingItem i={i} key={i} food={food} filling={filling} handleRemoveFood={this.handleRemoveFood} getFillingName={this.getFillingName} />
+                    {cartFoods.map((food, i) =>
+                        <ShoppingItem i={i} key={i} food={food} fillings={fillings} handleRemoveFood={this.handleRemoveFood} getFillingName={this.getFillingName} />
                     )}
                 </ul>
                 <p>{info}</p>

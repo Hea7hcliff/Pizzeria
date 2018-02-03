@@ -9,8 +9,8 @@ import { data } from './data/data';
 
 class App extends Component {
     state = {
-        food: null,
-        filling: null,
+        foods: null,
+        fillings: null,
         shoppingcart: [],
         searchterm: ''
     };
@@ -18,42 +18,42 @@ class App extends Component {
     // BACKEND  
     /*
     // DB haku
-    getFood() {
+    getFoods() {
         axios.get('http://localhost:3000/api/Food')
             .then(response => {
-                this.setState({ food: response.data }, () => {
+                this.setState({ foods: response.data }, () => {
                     // console.log(this.state);
                 })
             })
     }
 
-    getFilling() {
+    getFillings() {
         axios.get('http://localhost:3000/api/Fillings/')
             .then(response => {
-                this.setState({ filling: response.data }, () => {
+                this.setState({ fillings: response.data }, () => {
                     // console.log(this.state);
                 })
             })
     }
     
     componentWillMount() {
-        this.getFood();
-        this.getFilling();
+        this.getFoods();
+        this.getFillings();
     }
-    */ 
-    
+    */
+
     // Mock-data
     componentDidMount() {
-        this.setState({ food: data.food })
-        this.setState({ filling: data.filling })
+        this.setState({ foods: data.food })
+        this.setState({ fillings: data.filling })
     }
 
     // Ruuan lisääminen ostoskoriin
     addFood = (food) => {
         this.setState({
-            shoppingcart: [...this.state.shoppingcart, food]     
+            shoppingcart: [...this.state.shoppingcart, food]
         })
-        console.log(food);  
+        console.log(food);
     }
 
     // Ruuan poistaminen ostoskoriin
@@ -75,9 +75,9 @@ class App extends Component {
                     <Header />
                 </div>
                 <div className="container">
-                    <ProductList food={this.state.food} filling={this.state.filling} addFood={this.addFood} findFilling={this.findFilling} />
-                    <ShoppingCart food={this.state.shoppingcart} removeFood={this.removeFood} filling={ this.state.filling }/>
-                    <SearchBar food={this.state.food} searchterm={this.state.searchterm} searchHandler={this.searchHandler} addFood={this.addFood} />
+                    <ProductList foods={this.state.foods} fillings={this.state.fillings} addFood={this.addFood} />
+                    <ShoppingCart cartFoods={this.state.shoppingcart} removeFood={this.removeFood} fillings={this.state.fillings} />
+                    <SearchBar foods={this.state.foods} searchterm={this.state.searchterm} searchHandler={this.searchHandler} addFood={this.addFood} />
                 </div>
             </div>
         );

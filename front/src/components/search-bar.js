@@ -24,7 +24,7 @@ class SearchBar extends Component {
     }
 
     render() {
-        const { food } = this.props;
+        const { foods } = this.props;
         const searchterm = this.props.searchterm;
 
         return (
@@ -38,7 +38,7 @@ class SearchBar extends Component {
                     />
                     <ul>
                         {
-                            food !== null && food.filter(searchingFor(searchterm)).map((food, i) =>
+                            foods !== null && foods.filter(searchingFor(searchterm)).map((food, i) =>
                                 <SearchItem key={i} food={food} handleAddFood={this.handleAddFood} />)
                         }
                     </ul>
