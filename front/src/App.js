@@ -64,18 +64,14 @@ class App extends Component {
 
             const fillingsArray = fillings.map(f => f.id);
 
-            // *Muokkaa että 4 uniikkia täytettä
             // Lisää 4 random täytettä
-            for (var i = 0; i < 4; i++) {
-
-                const newFilling = fillingsArray[Math.floor(Math.random() * fillingsArray.length)];
-                randomFood.filling.push(newFilling);
-
-                /*var random = Math.floor(Math.random() * fillingsArray.length) + 1;
+            for (let i = 0; i < 4; i++) {
+                const random = Math.floor(Math.random() * fillingsArray.length) + 1;
                 if(randomFood.filling.indexOf(random) > -1) continue;
-                randomFood.filling.push(random);*/
+                randomFood.filling.push(random);
             }
-            console.log(randomFood.filling);
+            for (let j = 0; j < randomFood.filling.length; j++) {randomFood.filling[j] = String(randomFood.filling[j]); }
+
             // Lisää generoidun ruuan
             console.log('Great success adding', randomFood);
             this.addFood(randomFood);
@@ -127,7 +123,7 @@ class App extends Component {
                 </div>
                 <div className="container">
                     <ProductList foods={this.state.foods} fillings={this.state.fillings} handleAddFood={this.handleAddFood} generateFillings={this.generateFillings} />
-                    <ShoppingCart cartFoods={this.state.shoppingcart} fillings={this.state.fillings} getFillingName={this.getFillingName} />
+                    <ShoppingCart cartFoods={this.state.shoppingcart} fillings={this.state.fillings} getFillingName={this.getFillingName} removeFood={this.removeFood}/>
                     <SearchBar foods={this.state.foods} fillings={this.state.fillings} searchterm={this.state.searchterm} searchHandler={this.searchHandler} handleAddFood={this.handleAddFood} />
                 </div>
             </div>
