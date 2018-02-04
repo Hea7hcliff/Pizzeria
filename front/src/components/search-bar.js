@@ -12,20 +12,14 @@ function searchingFor(searchterm) {
 
 class SearchBar extends Component {
 
-    // *Korjaa ja yhdistä
-    handleAddFood = (food) => {
-        console.log('Great success adding', food);
-        this.props.addFood(food);
-    }
-
     // Estää formin default action
     submit = function (e) {
         e.preventDefault();
     }
 
     render() {
-        const { foods } = this.props;
-        const searchterm = this.props.searchterm;
+        const { foods, fillings, searchterm, handleAddFood } = this.props;
+
 
         return (
             <div className="searchbar">
@@ -39,7 +33,7 @@ class SearchBar extends Component {
                     <ul>
                         {
                             foods !== null && foods.filter(searchingFor(searchterm)).map((food, i) =>
-                                <SearchItem key={i} food={food} handleAddFood={this.handleAddFood} />)
+                                <SearchItem key={i} food={food} fillings={fillings} handleAddFood={handleAddFood} />)
                         }
                     </ul>
                 </form>

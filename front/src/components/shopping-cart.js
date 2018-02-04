@@ -35,11 +35,11 @@ class ShoppingCart extends Component {
         const prices = cartFoods.map(food => food.price);
         const reducer = (total, price) => total + price;
 
-        var info = '';
-        var order_b;
+        let info = '';
+        let orderButton;
         if (cartFoods.length > 0) {
             const total = prices.reduce(reducer);
-            order_b = <button onClick={() => this.addOrder(cartFoods)}>Tilaa</button>
+            orderButton = <button onClick={() => this.addOrder(cartFoods)}>Tilaa</button>
             info = "Kokonaishinta:  " + total + " €";
 
         } else {
@@ -55,7 +55,7 @@ class ShoppingCart extends Component {
                     )}
                 </ul>
                 <p>{info}</p>
-                {order_b}
+                {orderButton}
             </div>
         )
     }

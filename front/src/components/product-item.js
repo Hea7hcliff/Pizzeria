@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductItem = ({ food, handleAddFood, fillings, generateFillings }) => {
+const ProductItem = ({ food, fillings, handleAddFood, generateFillings }) => {
     return (
         <li>
             <p>Tuote: {food.name}</p>
@@ -12,4 +12,3 @@ const ProductItem = ({ food, handleAddFood, fillings, generateFillings }) => {
 }
 
 export default ProductItem;
- 
