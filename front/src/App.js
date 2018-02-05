@@ -67,10 +67,10 @@ class App extends Component {
             // Lisää 4 random täytettä
             for (let i = 0; i < 4; i++) {
                 const random = Math.floor(Math.random() * fillingsArray.length) + 1;
-                if(randomFood.filling.indexOf(random) > -1) continue;
+                if (randomFood.filling.indexOf(random) > -1) continue;
                 randomFood.filling.push(random);
             }
-            for (let j = 0; j < randomFood.filling.length; j++) {randomFood.filling[j] = String(randomFood.filling[j]); }
+            for (let j = 0; j < randomFood.filling.length; j++) { randomFood.filling[j] = String(randomFood.filling[j]); }
 
             // Lisää generoidun ruuan
             console.log('Great success adding', randomFood);
@@ -103,10 +103,10 @@ class App extends Component {
 
     // Tulostaa täytteet
     generateFillings = (food, fillings) => {
-        if (food.id !== "6") {
-            return food.filling.map((foodFillingID, i) => <p key={i}>- {this.getFillingName(fillings, foodFillingID)}</p>)
+        if (food.filling.length !== 0) {
+            return food.filling.map((foodFillingID, i) => <li key={i}> {this.getFillingName(fillings, foodFillingID)}</li>)
         } else {
-            return <p>-Voit saada mitä vain</p>;
+            return <li>-Voit saada mitä vain</li>;
         }
     }
 
@@ -123,8 +123,8 @@ class App extends Component {
                 </div>
                 <div className="container">
                     <ProductList foods={this.state.foods} fillings={this.state.fillings} handleAddFood={this.handleAddFood} generateFillings={this.generateFillings} />
-                    <ShoppingCart cartFoods={this.state.shoppingcart} fillings={this.state.fillings} getFillingName={this.getFillingName} removeFood={this.removeFood}/>
                     <SearchBar foods={this.state.foods} fillings={this.state.fillings} searchterm={this.state.searchterm} searchHandler={this.searchHandler} handleAddFood={this.handleAddFood} />
+                    <ShoppingCart cartFoods={this.state.shoppingcart} fillings={this.state.fillings} generateFillings={this.generateFillings} removeFood={this.removeFood} />
                 </div>
             </div>
         );

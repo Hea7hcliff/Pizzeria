@@ -29,7 +29,7 @@ class ShoppingCart extends Component {
     }
 
     render() {
-        const { cartFoods, fillings, getFillingName } = this.props;
+        const { cartFoods, fillings, generateFillings } = this.props;
         const prices = cartFoods.map(food => food.price);
         const reducer = (total, price) => total + price;
 
@@ -45,11 +45,11 @@ class ShoppingCart extends Component {
         }
 
         return (
-            <div className="shopping-cart">
+            <div className="shoppingcart">
                 <h3>Ostoskori</h3>
                 <ul>
                     {cartFoods.map((food, i) =>
-                        <ShoppingItem i={i} key={i} food={food} fillings={fillings} handleRemoveFood={this.handleRemoveFood} getFillingName={getFillingName} />
+                        <ShoppingItem i={i} key={i} food={food} fillings={fillings} handleRemoveFood={this.handleRemoveFood} generateFillings={generateFillings} />
                     )}
                 </ul>
                 <p>{info}</p>
