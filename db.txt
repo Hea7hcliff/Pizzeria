@@ -18,19 +18,7 @@ Filling: [
 Order: [
 	{
 		id: 'string',
-		user: 'string',
+		user: 'user_id',
 		content: ['food_id']
 	}
 ]
-
-
-{
-  "name": "Sinivalkoinen Suomi-pizza",
-  "filling": [
-    "5a6c5fd9d3dea32ba434c819",
-    "5a6c5fead3dea32ba434c81b",
-    "5a6c5fefd3dea32ba434c81c"
-  ],
-  "type": "pizza",
-  "price": 6.95
-}

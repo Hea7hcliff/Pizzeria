@@ -9,10 +9,11 @@ class ShoppingCart extends Component {
     }
 
     // Tilauksen hoitaminen
-    addOrder = (food) => {
+    addOrder = (cartFoods, totalPrice) => {
         const order = {
-            content: [food.map(food => food.id)],
-            user: "Test"
+            content: [cartFoods.map(food => food.id)],
+            user: "Test",
+            price: totalPrice
         }
 
         axios.request({
@@ -20,7 +21,7 @@ class ShoppingCart extends Component {
             url: 'http://localhost:3000/api/Orders',
             data: order
         }).then(response => {
-            console.log(response.data);
+            console.log("Great success ordering: ", response.data);
         }).catch(err => console.log(err));
     }
 
@@ -36,10 +37,10 @@ class ShoppingCart extends Component {
         let info = '';
         let orderButton;
         if (cartFoods.length > 0) {
-            const total = prices.reduce(reducer);
-            orderButton = <button className="btn btn-outline-info btn-sm" onClick={() => this.addOrder(cartFoods)}>Tilaa</button>
-            info = "Kokonaishinta:  " + this.rounding(total, 2) + " €";
-
+            let total = prices.reduce(reducer);
+            total = this.rounding(total, 2)
+            orderButton = <button className="btn btn-outline-info btn-sm" onClick={() => this.addOrder(cartFoods, total)}>Tilaa</button>
+            info = "Kokonaishinta:  " + total + " €";
         } else {
             info = "Ostoskori on tyhjä";
         }

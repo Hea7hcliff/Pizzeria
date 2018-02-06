@@ -8,7 +8,7 @@ import axios from 'axios';
 import uniqid from 'uniqid';
 
 // Mock-Data
-import { data } from './data/data';
+// import { data } from './data/data';
 
 class App extends Component {
     state = {
@@ -18,9 +18,6 @@ class App extends Component {
         searchterm: ''
     };
 
-    // BACKEND  
-    /*
-    // DB haku
     getFoods() {
         axios.get('http://localhost:3000/api/Food')
             .then(response => {
@@ -38,18 +35,20 @@ class App extends Component {
                 })
             })
     }
-    
+
     componentWillMount() {
         this.getFoods();
         this.getFillings();
     }
-    */
+    
 
-    // Mock-data
+    /* 
+    // Mock-data data/data.js
     componentDidMount() {
         this.setState({ foods: data.food })
         this.setState({ fillings: data.filling })
     }
+    */
 
     handleAddFood = (food, fillings) => {
         if (food.id === "6") {

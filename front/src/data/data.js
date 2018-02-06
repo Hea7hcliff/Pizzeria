@@ -1,3 +1,4 @@
+// Mock-data
 export const data = {
     food: [
         {
@@ -94,4 +95,3 @@ export const data = {
         }
     ]
 };
-
