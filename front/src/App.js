@@ -40,7 +40,7 @@ class App extends Component {
         this.getFoods();
         this.getFillings();
     }
-    
+
 
     /* 
     // Mock-data data/data.js
@@ -51,7 +51,9 @@ class App extends Component {
     */
 
     handleAddFood = (food, fillings) => {
-        if (food.id === "6") {
+        // Pomon surprise!
+        // Mock-data id="6"  |  DB-data id="5a6efadef0371f11d8e87389"
+        if (food.id === "5a6efadef0371f11d8e87389") {
             // Uuden objektin alustaminen
             const randomFood = {
                 filling: [],
@@ -61,13 +63,14 @@ class App extends Component {
                 id: uniqid()
             };
 
+            console.log(fillings);
             const fillingsArray = fillings.map(f => f.id);
 
             // Lisää 4 random täytettä
             for (let i = 0; i < 4; i++) {
-                const random = Math.floor(Math.random() * fillingsArray.length) + 1;
+                const random = Math.floor(Math.random() * fillingsArray.length);
                 if (randomFood.filling.indexOf(random) > -1) continue;
-                randomFood.filling.push(random);
+                randomFood.filling.push(fillings[random].id);
             }
             for (let j = 0; j < randomFood.filling.length; j++) { randomFood.filling[j] = String(randomFood.filling[j]); }
 

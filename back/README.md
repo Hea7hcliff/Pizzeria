@@ -6,3 +6,8 @@ back/server/middleware.json
       "params": "$!../client"
     }
 }
+
+## Start
+
+node . 
+starts builded version
