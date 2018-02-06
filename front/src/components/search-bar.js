@@ -23,14 +23,13 @@ class SearchBar extends Component {
 
         return (
             <div className="searchbar">
-                <form onSubmit={this.submit}>
-                    <h3>Hakupalkki</h3>
-                    <input type="text"
-                        placeholder="Search..."
+                <form className="form-group" onSubmit={this.submit}>
+                    <input className="form-control" type="text"
+                        placeholder="Hae ruokia.."
                         onChange={this.props.searchHandler}
                         value={searchterm}
                     />
-                    <ul>
+                    <ul className="list-group">
                         {
                             foods !== null && foods.filter(searchingFor(searchterm)).map((food, i) =>
                                 <SearchItem key={i} food={food} fillings={fillings} handleAddFood={handleAddFood} />)

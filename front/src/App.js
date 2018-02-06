@@ -104,9 +104,9 @@ class App extends Component {
     // Tulostaa täytteet
     generateFillings = (food, fillings) => {
         if (food.filling.length !== 0) {
-            return food.filling.map((foodFillingID, i) => <li key={i}> {this.getFillingName(fillings, foodFillingID)}</li>)
+            return food.filling.map((foodFillingID, i) => <li key={i}><strong>{this.getFillingName(fillings, foodFillingID)}</strong></li>)
         } else {
-            return <li>-Voit saada mitä vain</li>;
+            return <li><strong>Voit saada mitä vain</strong></li>;
         }
     }
 
@@ -118,12 +118,10 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className="header">
-                    <Header />
-                </div>
+                <Header />
+                <SearchBar foods={this.state.foods} fillings={this.state.fillings} searchterm={this.state.searchterm} searchHandler={this.searchHandler} handleAddFood={this.handleAddFood} />
                 <div className="container">
                     <ProductList foods={this.state.foods} fillings={this.state.fillings} handleAddFood={this.handleAddFood} generateFillings={this.generateFillings} />
-                    <SearchBar foods={this.state.foods} fillings={this.state.fillings} searchterm={this.state.searchterm} searchHandler={this.searchHandler} handleAddFood={this.handleAddFood} />
                     <ShoppingCart cartFoods={this.state.shoppingcart} fillings={this.state.fillings} generateFillings={this.generateFillings} removeFood={this.removeFood} />
                 </div>
             </div>

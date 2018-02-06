@@ -2,8 +2,8 @@ import React from 'react';
 
 const SearchItem = ({ food, handleAddFood, fillings }) => {
     return (
-        <li>
-            <p>{food.name}<button onClick={() => handleAddFood(food, fillings)}>Lisää</button></p>
+        <li className="list-group-item">
+            <p>{food.name}<button className="btn btn-outline-success btn-sm" onClick={() => handleAddFood(food, fillings)}>Lisää</button></p>
         </li>
     )
 }

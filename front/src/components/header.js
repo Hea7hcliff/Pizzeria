@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <h1>Collapick - Pizzeria</h1>
+        <h1>Pizzeria</h1>
     )
 }
 

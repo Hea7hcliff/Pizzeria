@@ -37,7 +37,7 @@ class ShoppingCart extends Component {
         let orderButton;
         if (cartFoods.length > 0) {
             const total = prices.reduce(reducer);
-            orderButton = <button onClick={() => this.addOrder(cartFoods)}>Tilaa</button>
+            orderButton = <button className="btn btn-outline-info btn-sm" onClick={() => this.addOrder(cartFoods)}>Tilaa</button>
             info = "Kokonaishinta:  " + this.rounding(total, 2) + " €";
 
         } else {
@@ -47,12 +47,12 @@ class ShoppingCart extends Component {
         return (
             <div className="shoppingcart">
                 <h3>Ostoskori</h3>
-                <ul>
+                <ul className="list-group">
                     {cartFoods.map((food, i) =>
                         <ShoppingItem i={i} key={i} food={food} fillings={fillings} handleRemoveFood={this.handleRemoveFood} generateFillings={generateFillings} />
                     )}
                 </ul>
-                <p>{info}</p>
+                <h4>{info}</h4>
                 {orderButton}
             </div>
         )

@@ -9,7 +9,7 @@ class ProductList extends Component {
         return (
             <div className="product-list">
                 <h3>Ruuat</h3>
-                <ul>
+                <ul  className="list-group">
                     {
                         fillings !== null && foods !== null && foods.map((food, i) =>
                             <ProductItem key={i} food={food} generateFillings={generateFillings} handleAddFood={handleAddFood} fillings={fillings} />
