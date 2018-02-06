@@ -11,10 +11,8 @@
       "required": true
     },
     "filling": {
-      "type": [
-        "string"
-      ],
-      "required": true
+      "type": [],
+      "required": false
     },
     "type": {
       "type": "string",
